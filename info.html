@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Flat Owners</title>
+  <style>
+    :root{--blue:#3a86ff;--muted:#666}
+    body{margin:0;font-family:Arial;background:#f2f4f8}
+    .topbar{background:var(--blue);color:#fff;padding:10px 14px;display:flex;align-items:center;gap:12px}
+    .topbar h1{font-size:16px;margin:0}
+    .container{padding:12px}
+    .list{background:#fff;border-radius:8px;box-shadow:0 4px 10px rgba(0,0,0,.06);overflow:auto;max-height:70vh}
+    .row{display:flex;justify-content:space-between;align-items:center;padding:12px 14px;border-bottom:1px solid #eee}
+    .row:last-child{border-bottom:0}
+    .left{display:flex;flex-direction:column}
+    .name{font-weight:700}
+    .meta{color:var(--muted);font-size:13px;margin-top:6px}
+    .actions{display:flex;gap:10px;align-items:center}
+    .pill{background:#f6f8fb;padding:6px 8px;border-radius:6px;font-size:13px;color:#222}
+    a.icon{color:var(--blue);text-decoration:none;font-size:16px}
+    .small{font-size:12px;color:var(--muted)}
+    .empty{padding:20px;text-align:center;color:var(--muted)}
+    .back{margin-left:auto;color:#fff;text-decoration:none;font-size:14px}
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <h1>Flat Owners</h1>
+    <button id="addBtn" title="Add Flat Owner" style="margin-left:12px;padding:6px 10px;border-radius:6px;border:none;cursor:pointer;background:#ffd166;color:#000">＋ Add</button>
+    <a class="back" href="index.html">← Login</a>
+  </div>
+
+  <div class="container">
+    <div id="list" class="list">
+      <div class="empty">Loading…</div>
+    </div>
+  </div>
+
+  <!-- Add Flat Owner Modal -->
+  <div id="addModal" class="modal" aria-hidden="true">
+    <div class="modal-dialog">
+      <h3>Add Flat Owner</h3>
+      <form id="addForm">
+        <label>Name (required)<input id="nameInput" required></label>
+        <label>Flat (required)<input id="flatInput" required></label>
+        <label>Contact (required)<input id="contactInput" required></label>
+        <label>Maintenance (required)<input id="maintenanceInput" required type="number" min="0"></label>
+        <label>Due (required)<input id="dueInput" required type="number" min="0"></label>
+        <div class="form-row">
+          <div class="err" id="formErr" style="color:red;font-size:13px"></div>
+          <div style="margin-left:auto;display:flex;gap:8px">
+            <button type="button" id="cancelAdd">Cancel</button>
+            <button type="submit" id="submitAdd" style="background:#2a9d8f;color:#fff;border:none;padding:8px 12px;border-radius:6px">Save</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <style>
+    .modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.4);align-items:center;justify-content:center;padding:20px}
+    .modal.open{display:flex}
+    .modal-dialog{background:#fff;padding:18px;border-radius:8px;min-width:320px;max-width:480px;box-shadow:0 10px 30px rgba(0,0,0,.2)}
+    .modal-dialog h3{margin-top:0}
+    .modal-dialog label{display:block;margin:8px 0;font-size:13px}
+    .modal-dialog input{width:100%;padding:8px;margin-top:6px;box-sizing:border-box}
+    .form-row{display:flex;align-items:center;margin-top:10px}
+  </style>
+
+  <script type="module" src="./info.js"></script>
+</body>
+</html>
